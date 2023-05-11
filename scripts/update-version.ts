@@ -5,7 +5,6 @@ import chalk from 'chalk'
 import { findWorkspacePackages } from '@pnpm/find-workspace-packages'
 import type { Project } from '@pnpm/find-workspace-packages'
 import { version } from '../packages/cli/version'
-import {} from '@baicie/cli'
 
 export const projectRoot = path.resolve(fileURLToPath(import.meta.url), '..', '..')
 const getWorkspacePackages = () => findWorkspacePackages(projectRoot)
@@ -24,13 +23,13 @@ async function main() {
 
   consola.log(chalk.cyan(`$new version: ${version}`))
 
-  consola.debug(chalk.yellow('Updating package.json for @baicie/cli'))
+  consola.debug(chalk.yellow('Updating package.json for pv-sync'))
 
   const pkgs = Object.fromEntries(
     (await getWorkspacePackages()).map(pkg => [pkg.manifest.name!, pkg]),
   )
 
-  const BaicieCli = pkgs['@baicie/cli']
+  const PvSync = pkgs['pv-sync']
 
   const writeVersion = async (project: Project) => {
     await project.writeProjectManifest({
@@ -40,13 +39,13 @@ async function main() {
   }
 
   try {
-    await writeVersion(BaicieCli)
+    await writeVersion(PvSync)
   }
   catch (error) {
     errorAndExit(error as Error)
   }
 
-  consola.success(chalk.green(`package @baicie/cli updated successfully to version ${version}`))
+  consola.success(chalk.green(`package pv-sync updated successfully to version ${version}`))
 }
 
 main()

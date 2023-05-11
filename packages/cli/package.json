@@ -1,10 +1,9 @@
 {
-  "name": "pv-cli",
+  "name": "pv-sync",
   "version": "0.0.1",
   "type": "module",
   "bin": {
-    "baicie-create-app": "index.js",
-    "bca": "index.js"
+    "sync": "index.js"
   },
   "scripts": {
     "build-only": "tsx build.ts",
@@ -16,10 +15,11 @@
   "files": [
     "package.json",
     "index.js",
-    "dist",
-    "templates"
+    "dist"
   ],
-  "keywords": [],
+  "keywords": [
+    "sycn package"
+  ],
   "author": "baicie",
   "license": "MIT",
   "dependencies": {
@@ -45,5 +45,8 @@
     "tsx": "^3.12.7",
     "typescript": "^5.0.4"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "publishConfig": {
+    "registry": "http://npm.chinahuatong.com.cn:9002/repository/npm-host/"
+  }
 }
