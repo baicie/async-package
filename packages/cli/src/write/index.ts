@@ -1,8 +1,8 @@
 import path from 'node:path'
+import fs from 'fs-extra'
 import consola from 'consola'
 import ora from 'ora'
 import chalk from 'chalk'
-import fs from 'fs-extra'
 import type { GlobalOptions } from '../type'
 import {
   DEFAULT_CACHE_FILE_NAME,
@@ -15,12 +15,11 @@ import { writeVersion } from './write'
 
 export async function write(conf: GlobalOptions) {
   const cachePkg = path.join(cacheRoot, DEFAULT_CACHE_FILE_NAME)
-  const targetPkg = targetPath('/play/package.json')
-
+  const targetPkg = targetPath(conf?.target ?? '')
+  consola.info('targetPkg', targetPkg)
   const spinner = ora(`正在从 ${cachePkg} 向 ${targetPkg} 写入版本...`).start()
 
   try {
-    consola.success('write', targetPkg)
     const { dependencies: cacheDep, devDependencies: cacheDevdep } = await getPackageDevpebdencies(cachePkg)
     const { dependencies, devDependencies } = await getPackageDevpebdencies(targetPkg)
 
@@ -36,6 +35,7 @@ export async function write(conf: GlobalOptions) {
     targetManifest.devDependencies = targetDevdep
 
     // 替换文件
+
     fs.writeFileSync(targetPkg, JSON.stringify(targetManifest), { encoding: 'utf8' })
 
     spinner.color = 'green'

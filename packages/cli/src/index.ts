@@ -15,7 +15,7 @@ cli
   .option('--target <target>', '[string] 同步路径', { default: DEFAULT_FILE_NAME })
   .action(async (root: string, options: GlobalOptions) => {
     try {
-      consola.info(projectRoot)
+      consola.info('projectRoot', projectRoot)
       await prompts(options)
     }
     catch (error) {
