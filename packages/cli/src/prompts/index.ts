@@ -1,7 +1,7 @@
-import { consola } from 'consola'
 import type { GlobalOptions } from '../type'
 import { validateGitUrl, validateTargetPath } from '../util'
 import { download } from '../download'
+import { write } from '../write'
 import { askSource, askTarget } from './steps'
 
 async function ask(conf: GlobalOptions) {
@@ -16,10 +16,6 @@ async function ask(conf: GlobalOptions) {
     config.target = await askTarget()
 
   return config
-}
-
-async function write(conf: GlobalOptions) {
-  consola.success('write', conf)
 }
 
 export async function prompts(conf: GlobalOptions) {
