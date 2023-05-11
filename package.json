@@ -1,0 +1,38 @@
+{
+  "name": "sync-project-monorepo",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": "true",
+  "scripts": {
+    "build": "pnpm run -C packages/cli build",
+    "update:version": "tsx scripts/update-version.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "cli": "tsx packages/cli/src/index.ts",
+    "cli-prod": "node packages/cli/dist/index.js",
+    "cz": "cz"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.38.5",
+    "@types/minimist": "^1.2.2",
+    "@types/prompts": "^2.4.2",
+    "@types/resolve": "^1.20.2",
+    "commitizen": "^4.3.0",
+    "cross-spawn": "^7.0.3",
+    "cz-customizable": "^7.0.0",
+    "kolorist": "^1.7.0",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2",
+    "rollup-plugin-license": "^3.0.1",
+    "tsup": "^6.7.0",
+    "tsx": "^3.12.7",
+    "unbuild": "^1.1.2"
+  },
+  "dependencies": {
+    "@pnpm/find-workspace-packages": "^6.0.7",
+    "@types/cross-spawn": "^6.0.2",
+    "chalk": "^5.2.0",
+    "consola": "^3.1.0",
+    "rimraf": "^5.0.0"
+  }
+}

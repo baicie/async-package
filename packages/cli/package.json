@@ -1,0 +1,47 @@
+{
+  "name": "pv-cli",
+  "version": "0.0.1",
+  "type": "module",
+  "bin": {
+    "baicie-create-app": "index.js",
+    "bca": "index.js"
+  },
+  "scripts": {
+    "build-only": "tsx build.ts",
+    "build-tsc": "tsc",
+    "build": "pnpm run clean-dist && pnpm run build-only",
+    "clean-dist": "rimraf dist",
+    "prod": "node ./dist/index.js"
+  },
+  "files": [
+    "package.json",
+    "index.js",
+    "dist",
+    "templates"
+  ],
+  "keywords": [],
+  "author": "baicie",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/prompts": "^1.0.3",
+    "adm-zip": "^0.5.10",
+    "cac": "^6.7.14",
+    "chalk": "^5.2.0",
+    "consola": "^3.1.0",
+    "fast-glob": "^3.2.12",
+    "fs-extra": "^11.1.1",
+    "git-clone": "^0.2.0",
+    "ora": "^6.3.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/git-clone": "^0.2.0",
+    "@types/request": "^2.48.8",
+    "rimraf": "^5.0.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
+  },
+  "main": "index.js"
+}
