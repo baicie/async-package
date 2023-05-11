@@ -10,7 +10,7 @@ const cli = cac('sync')
 
 // sync
 cli
-  .command('sync [root]', 'sync package')
+  .command('[root]', 'sync package')
   .option('--source <source>', '[string] 源地址', { default: DEFAULT_SYNC_ADDRESS })
   .option('--target <target>', '[string] 同步路径', { default: DEFAULT_FILE_NAME })
   .action(async (root: string, options: GlobalOptions) => {
