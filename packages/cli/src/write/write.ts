@@ -6,4 +6,5 @@ export function writeVersion(sources: DepsType, targets: DepsType) {
     // 如果目标有当前依赖
       targets[name] = version
   }
+  return targets
 }
